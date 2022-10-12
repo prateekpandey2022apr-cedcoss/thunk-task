@@ -14,6 +14,8 @@ function Home(props) {
     <>
       <button onClick={() => props.fetchUser()}>Load Data</button>
       <>
+        {props.userData.loading && <p>Loading ...</p>}
+
         {props.userData.users.length > 0 && (
           <>
             <p>Users loaded via thunk</p>
