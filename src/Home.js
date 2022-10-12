@@ -7,25 +7,24 @@ import { fetchUser } from "./redux/userReducer";
 
 function Home(props) {
   useEffect(() => {
-    props.fetchUser();
+    // props.fetchUser();
   }, []);
 
   return (
     <>
-      {props?.userData?.loading ? (
-        <>
-          <p>Loading Users using thunk ... </p>
-        </>
-      ) : (
-        <>
-          <p>Users loaded via thunk</p>
-          <ul>
-            {props.userData.users.map((user, idx) => {
-              return <li key={idx}>{user.username}</li>;
-            })}
-          </ul>
-        </>
-      )}
+      <button onClick={() => props.fetchUser()}>Load Data</button>
+      <>
+        {props.userData.users.length > 0 && (
+          <>
+            <p>Users loaded via thunk</p>
+            <ul>
+              {props.userData.users.map((user, idx) => {
+                return <li key={idx}>{user.username}</li>;
+              })}
+            </ul>
+          </>
+        )}
+      </>
     </>
   );
 }
